@@ -231,8 +231,7 @@ export function getTokenForProvider(
             );
         case ModelProviderName.FAL:
             return (
-                character.settings?.secrets?.FAL_API_KEY ||
-                settings.FAL_API_KEY
+                character.settings?.secrets?.FAL_API_KEY || settings.FAL_API_KEY
             );
     }
 }
@@ -340,8 +339,8 @@ export function createAgent(
                 ? coinbaseCommercePlugin
                 : null,
             getSecret(character, "FAL_API_KEY") ||
-                getSecret(character, "OPENAI_API_KEY") ||
-                getSecret(character, "HEURIST_API_KEY")
+            getSecret(character, "OPENAI_API_KEY") ||
+            getSecret(character, "HEURIST_API_KEY")
                 ? imageGenerationPlugin
                 : null,
             ...(getSecret(character, "COINBASE_API_KEY") &&
@@ -476,7 +475,9 @@ async function handleUserInput(input, agentId) {
         );
 
         const data = await response.json();
-        data.forEach((message) => elizaLogger.log(`${"Agent"}: ${message.text}`));
+        data.forEach((message) =>
+            elizaLogger.log(`${"Agent"}: ${message.text}`)
+        );
     } catch (error) {
         console.error("Error fetching response:", error);
     }
